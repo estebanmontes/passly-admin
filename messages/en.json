@@ -1,0 +1,56 @@
+{
+  "metadata": {
+    "title": "Passly Admin — Organizer Dashboard",
+    "description": "Manage your events, track sales, and grow your audience with Passly Admin."
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "overview": "Overview",
+    "welcome": "Welcome back",
+    "kpi": {
+      "totalRevenue": "Total Revenue",
+      "totalAttendance": "Total Attendance",
+      "activeEvents": "Active Events",
+      "conversionRate": "Conversion Rate",
+      "vsLastMonth": "vs last month"
+    },
+    "salesChart": {
+      "title": "Ticket Sales Growth",
+      "organic": "Organic",
+      "marketing": "Marketing",
+      "daily": "Daily",
+      "weekly": "Weekly",
+      "monthly": "Monthly"
+    },
+    "upcomingEvents": {
+      "title": "Upcoming Events",
+      "viewAll": "View All",
+      "eventDetail": "Event Detail",
+      "dateTime": "Date & Time",
+      "venue": "Venue",
+      "salesVelocity": "Sales Velocity",
+      "status": "Status",
+      "settings": "Settings"
+    },
+    "status": {
+      "onSale": "On Sale",
+      "soldOut": "Sold Out",
+      "draft": "Draft",
+      "scheduled": "Scheduled"
+    }
+  },
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "events": "Events",
+    "orders": "Orders",
+    "attendees": "Attendees",
+    "analytics": "Analytics",
+    "venues": "Venues",
+    "settings": "Settings",
+    "newEvent": "New Event"
+  },
+  "header": {
+    "search": "Search events, orders...",
+    "notifications": "Notifications"
+  }
+}

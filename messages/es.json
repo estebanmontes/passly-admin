@@ -1,0 +1,56 @@
+{
+  "metadata": {
+    "title": "Passly Admin — Panel del Organizador",
+    "description": "Gestiona tus eventos, rastrea ventas y haz crecer tu audiencia con Passly Admin."
+  },
+  "dashboard": {
+    "title": "Panel",
+    "overview": "Resumen",
+    "welcome": "Bienvenido de vuelta",
+    "kpi": {
+      "totalRevenue": "Ingresos Totales",
+      "totalAttendance": "Asistencia Total",
+      "activeEvents": "Eventos Activos",
+      "conversionRate": "Tasa de Conversión",
+      "vsLastMonth": "vs mes anterior"
+    },
+    "salesChart": {
+      "title": "Crecimiento de Ventas",
+      "organic": "Orgánico",
+      "marketing": "Marketing",
+      "daily": "Diario",
+      "weekly": "Semanal",
+      "monthly": "Mensual"
+    },
+    "upcomingEvents": {
+      "title": "Próximos Eventos",
+      "viewAll": "Ver Todos",
+      "eventDetail": "Detalle del Evento",
+      "dateTime": "Fecha y Hora",
+      "venue": "Lugar",
+      "salesVelocity": "Velocidad de Ventas",
+      "status": "Estado",
+      "settings": "Ajustes"
+    },
+    "status": {
+      "onSale": "En Venta",
+      "soldOut": "Agotado",
+      "draft": "Borrador",
+      "scheduled": "Programado"
+    }
+  },
+  "sidebar": {
+    "dashboard": "Panel",
+    "events": "Eventos",
+    "orders": "Órdenes",
+    "attendees": "Asistentes",
+    "analytics": "Analíticas",
+    "venues": "Lugares",
+    "settings": "Configuración",
+    "newEvent": "Nuevo Evento"
+  },
+  "header": {
+    "search": "Buscar eventos, órdenes...",
+    "notifications": "Notificaciones"
+  }
+}
