@@ -51,10 +51,13 @@ export function Sidebar() {
 
       {/* New Event Button */}
       <div className="p-4">
-        <button className="flex w-full items-center justify-center gap-2 rounded-2xl bg-charcoal px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-charcoal/90">
+        <Link
+          href="/events/create"
+          className="flex w-full items-center justify-center gap-2 rounded-2xl bg-charcoal px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-charcoal/90"
+        >
           <Icon name="add" size={20} />
           {t("newEvent")}
-        </button>
+        </Link>
       </div>
     </aside>
   );

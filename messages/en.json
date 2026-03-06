@@ -12,6 +12,7 @@
       "totalAttendance": "Total Attendance",
       "activeEvents": "Active Events",
       "conversionRate": "Conversion Rate",
+      "totalOrders": "Total Orders",
       "vsLastMonth": "vs last month"
     },
     "salesChart": {
@@ -39,6 +40,126 @@
       "scheduled": "Scheduled"
     }
   },
+  "events": {
+    "title": "Events",
+    "createEvent": "Create Event",
+    "noEvents": "No events yet. Create your first event to get started.",
+    "sold": "Sold",
+    "status": {
+      "ON_SALE": "Live",
+      "DRAFT": "Draft",
+      "SCHEDULED": "Scheduled",
+      "SOLD_OUT": "Sold Out",
+      "CANCELLED": "Cancelled",
+      "COMPLETED": "Past"
+    },
+    "detail": {
+      "editEvent": "Edit Event",
+      "viewEvent": "Event Details",
+      "backToEvents": "Back to Events",
+      "save": "Save Changes",
+      "saving": "Saving...",
+      "saved": "Changes saved successfully!",
+      "deleteEvent": "Delete Event",
+      "deleteConfirm": "Are you sure you want to delete this event? This action cannot be undone.",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "notFound": "Event not found",
+      "general": "General",
+      "dateVenue": "Date & Venue",
+      "tickets": "Tickets",
+      "danger": "Danger Zone",
+      "eventId": "Event ID",
+      "created": "Created",
+      "updated": "Last Updated",
+      "slug": "URL Slug",
+      "capacity": "Total Capacity",
+      "ticketsSold": "Tickets Sold",
+      "revenue": "Revenue",
+      "status": "Status"
+    }
+  },
+  "wizard": {
+    "title": "Create Event Wizard",
+    "steps": {
+      "basics": "Basics",
+      "venue": "Venue",
+      "tickets": "Tickets",
+      "publish": "Publish"
+    },
+    "saveDraft": "Save Draft",
+    "nextStep": "Next Step",
+    "prevStep": "Back",
+    "publish": "Publish Event",
+    "saving": "Saving...",
+    "livePreview": "Live Preview",
+    "basics": {
+      "eventName": "Event Name",
+      "eventNamePlaceholder": "Enter event name",
+      "slug": "URL Slug",
+      "slugPlaceholder": "event-name",
+      "category": "Category",
+      "categoryPlaceholder": "Select a category",
+      "description": "Description",
+      "descriptionPlaceholder": "Describe your event...",
+      "coverUrl": "Cover Image URL",
+      "coverUrlPlaceholder": "https://example.com/image.jpg"
+    },
+    "dateVenue": {
+      "startDate": "Start Date & Time",
+      "endDate": "End Date & Time",
+      "doorsOpen": "Doors Open",
+      "selectVenue": "Venue",
+      "selectVenuePlaceholder": "Select a venue",
+      "noVenue": "No venue (online event)",
+      "currency": "Currency"
+    },
+    "tickets": {
+      "title": "Ticket Tiers",
+      "addTier": "Add Ticket Tier",
+      "tierName": "Tier Name",
+      "tierNamePlaceholder": "e.g. General Admission",
+      "price": "Price",
+      "quantity": "Total Quantity",
+      "maxPerOrder": "Max Per Order",
+      "description": "Description",
+      "descriptionPlaceholder": "Optional tier description",
+      "removeTier": "Remove",
+      "noTiers": "Add at least one ticket tier to continue."
+    },
+    "review": {
+      "title": "Review & Publish",
+      "subtitle": "Review your event details before publishing.",
+      "eventDetails": "Event Details",
+      "dateAndVenue": "Date & Venue",
+      "ticketTiers": "Ticket Tiers",
+      "totalCapacity": "Total Capacity",
+      "priceRange": "Price Range",
+      "publishAs": "Publish as",
+      "draft": "Save as Draft",
+      "live": "Publish Live (On Sale)"
+    },
+    "categories": {
+      "MUSIC": "Music",
+      "CONFERENCE": "Conference",
+      "SPORTS": "Sports",
+      "THEATER": "Theater",
+      "FESTIVAL": "Festival",
+      "COMEDY": "Comedy",
+      "WORKSHOP": "Workshop",
+      "NETWORKING": "Networking",
+      "OTHER": "Other"
+    },
+    "currencies": {
+      "USD": "USD ($)",
+      "EUR": "EUR (€)",
+      "GBP": "GBP (£)",
+      "MXN": "MXN ($)",
+      "COP": "COP ($)"
+    },
+    "success": "Event created successfully!",
+    "error": "Failed to create event. Please try again."
+  },
   "sidebar": {
     "dashboard": "Dashboard",
     "events": "Events",
@@ -52,5 +173,14 @@
   "header": {
     "search": "Search events, orders...",
     "notifications": "Notifications"
+  },
+  "auth": {
+    "subtitle": "Organizer Dashboard",
+    "continueWithGoogle": "Continue with Google",
+    "loading": "Signing in...",
+    "signOut": "Sign out",
+    "unauthorized": "Access denied. Only organizers and admins can access the dashboard.",
+    "noAccount": "No account found for this email. Contact an admin to get access.",
+    "footer": "By signing in you agree to our Terms of Service."
   }
 }

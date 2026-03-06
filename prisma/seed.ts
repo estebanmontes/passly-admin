@@ -3,23 +3,65 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
-  // Create a demo user
-  const user = await prisma.user.upsert({
-    where: { email: "admin@passly.io" },
-    update: {},
-    create: {
-      email: "admin@passly.io",
-      name: "Alex Morgan",
+  // Clean existing data (in reverse dependency order)
+  await prisma.pass.deleteMany();
+  await prisma.orderItem.deleteMany();
+  await prisma.order.deleteMany();
+  await prisma.favorite.deleteMany();
+  await prisma.eventBadge.deleteMany();
+  await prisma.eventArtist.deleteMany();
+  await prisma.ticketTier.deleteMany();
+  await prisma.event.deleteMany();
+  await prisma.venue.deleteMany();
+  await prisma.organizer.deleteMany();
+  await prisma.session.deleteMany();
+  await prisma.account.deleteMany();
+  await prisma.user.deleteMany();
+
+  // Create admin user
+  const admin_user = await prisma.user.create({
+    data: {
+      email: "estebanmgcr@gmail.com",
+      name: "Esteban Montes",
+      role: "ADMIN",
       emailVerified: true,
     },
   });
 
-  // Create an organizer
-  const organizer = await prisma.organizer.upsert({
-    where: { slug: "passly-events" },
-    update: {},
-    create: {
-      userId: user.id,
+  // Create a demo organizer user
+  const organizer_user = await prisma.user.create({
+    data: {
+      email: "admin@passly.io",
+      name: "Alex Morgan",
+      role: "ORGANIZER",
+      emailVerified: true,
+    },
+  });
+
+  // Create a demo customer
+  const customer = await prisma.user.create({
+    data: {
+      email: "customer@example.com",
+      name: "Jamie Rivera",
+      role: "CUSTOMER",
+      emailVerified: true,
+    },
+  });
+
+  // Create organizer profile for admin
+  const adminOrganizer = await prisma.organizer.create({
+    data: {
+      userId: admin_user.id,
+      name: "Passly HQ",
+      slug: "passly-hq",
+      description: "Passly headquarters — platform admin",
+    },
+  });
+
+  // Create organizer profile
+  const organizer = await prisma.organizer.create({
+    data: {
+      userId: organizer_user.id,
       name: "Passly Events",
       slug: "passly-events",
       description: "Premier event organizer",
@@ -118,7 +160,11 @@ async function main() {
     },
   });
 
-  console.log("Seeded:", { user, organizer, venue1, venue2, event1, event2 });
+  console.log("Seeded successfully:");
+  console.log("  Users:", admin_user.email, "(ADMIN),", organizer_user.email, "(ORGANIZER),", customer.email, "(CUSTOMER)");
+  console.log("  Organizer:", organizer.name);
+  console.log("  Venues:", venue1.name, ",", venue2.name);
+  console.log("  Events:", event1.title, ",", event2.title);
 }
 
 main()
