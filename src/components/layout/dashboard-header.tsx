@@ -2,10 +2,41 @@
 
 import { useTranslations } from "next-intl";
 import { Icon } from "@/components/shared/icon";
+import { signOut } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 
-export function DashboardHeader() {
+interface DashboardHeaderProps {
+  user: {
+    name: string;
+    email: string;
+    image?: string | null;
+  };
+}
+
+function getInitials(name: string): string {
+  return name
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .toUpperCase()
+    .slice(0, 2);
+}
+
+export function DashboardHeader({ user }: DashboardHeaderProps) {
   const t = useTranslations("dashboard");
   const headerT = useTranslations("header");
+  const authT = useTranslations("auth");
+  const router = useRouter();
+
+  const handleSignOut = async () => {
+    await signOut({
+      fetchOptions: {
+        onSuccess: () => {
+          router.push("/signin");
+        },
+      },
+    });
+  };
 
   return (
     <header className="sticky top-0 z-20 flex h-16 items-center justify-between border-b border-border bg-white/80 px-8 backdrop-blur-sm">
@@ -40,11 +71,28 @@ export function DashboardHeader() {
 
         {/* User */}
         <div className="flex items-center gap-3">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-indigo-100 text-sm font-semibold text-indigo-600">
-            AM
-          </div>
-          <span className="text-sm font-medium">Alex Morgan</span>
+          {user.image ? (
+            <img
+              src={user.image}
+              alt={user.name}
+              className="h-8 w-8 rounded-full object-cover"
+            />
+          ) : (
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-indigo-100 text-sm font-semibold text-indigo-600">
+              {getInitials(user.name)}
+            </div>
+          )}
+          <span className="text-sm font-medium">{user.name}</span>
         </div>
+
+        {/* Sign out */}
+        <button
+          onClick={handleSignOut}
+          className="flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:bg-slate-50"
+          title={authT("signOut")}
+        >
+          <Icon name="logout" size={20} className="text-muted-foreground" />
+        </button>
       </div>
     </header>
   );

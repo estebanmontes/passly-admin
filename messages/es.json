@@ -12,6 +12,7 @@
       "totalAttendance": "Asistencia Total",
       "activeEvents": "Eventos Activos",
       "conversionRate": "Tasa de Conversión",
+      "totalOrders": "Órdenes Totales",
       "vsLastMonth": "vs mes anterior"
     },
     "salesChart": {
@@ -39,6 +40,126 @@
       "scheduled": "Programado"
     }
   },
+  "events": {
+    "title": "Eventos",
+    "createEvent": "Crear Evento",
+    "noEvents": "Aún no hay eventos. Crea tu primer evento para comenzar.",
+    "sold": "Vendidos",
+    "status": {
+      "ON_SALE": "En Vivo",
+      "DRAFT": "Borrador",
+      "SCHEDULED": "Programado",
+      "SOLD_OUT": "Agotado",
+      "CANCELLED": "Cancelado",
+      "COMPLETED": "Pasado"
+    },
+    "detail": {
+      "editEvent": "Editar Evento",
+      "viewEvent": "Detalles del Evento",
+      "backToEvents": "Volver a Eventos",
+      "save": "Guardar Cambios",
+      "saving": "Guardando...",
+      "saved": "¡Cambios guardados exitosamente!",
+      "deleteEvent": "Eliminar Evento",
+      "deleteConfirm": "¿Estás seguro de que quieres eliminar este evento? Esta acción no se puede deshacer.",
+      "cancel": "Cancelar",
+      "delete": "Eliminar",
+      "notFound": "Evento no encontrado",
+      "general": "General",
+      "dateVenue": "Fecha y Lugar",
+      "tickets": "Entradas",
+      "danger": "Zona de Peligro",
+      "eventId": "ID del Evento",
+      "created": "Creado",
+      "updated": "Última Actualización",
+      "slug": "URL Slug",
+      "capacity": "Capacidad Total",
+      "ticketsSold": "Entradas Vendidas",
+      "revenue": "Ingresos",
+      "status": "Estado"
+    }
+  },
+  "wizard": {
+    "title": "Crear Evento",
+    "steps": {
+      "basics": "Básicos",
+      "venue": "Lugar",
+      "tickets": "Entradas",
+      "publish": "Publicar"
+    },
+    "saveDraft": "Guardar Borrador",
+    "nextStep": "Siguiente",
+    "prevStep": "Atrás",
+    "publish": "Publicar Evento",
+    "saving": "Guardando...",
+    "livePreview": "Vista Previa",
+    "basics": {
+      "eventName": "Nombre del Evento",
+      "eventNamePlaceholder": "Ingresa el nombre del evento",
+      "slug": "URL Slug",
+      "slugPlaceholder": "nombre-del-evento",
+      "category": "Categoría",
+      "categoryPlaceholder": "Selecciona una categoría",
+      "description": "Descripción",
+      "descriptionPlaceholder": "Describe tu evento...",
+      "coverUrl": "URL de Imagen de Portada",
+      "coverUrlPlaceholder": "https://ejemplo.com/imagen.jpg"
+    },
+    "dateVenue": {
+      "startDate": "Fecha y Hora de Inicio",
+      "endDate": "Fecha y Hora de Fin",
+      "doorsOpen": "Apertura de Puertas",
+      "selectVenue": "Lugar",
+      "selectVenuePlaceholder": "Selecciona un lugar",
+      "noVenue": "Sin lugar (evento en línea)",
+      "currency": "Moneda"
+    },
+    "tickets": {
+      "title": "Tipos de Entrada",
+      "addTier": "Agregar Tipo de Entrada",
+      "tierName": "Nombre del Tipo",
+      "tierNamePlaceholder": "ej. Admisión General",
+      "price": "Precio",
+      "quantity": "Cantidad Total",
+      "maxPerOrder": "Máximo por Orden",
+      "description": "Descripción",
+      "descriptionPlaceholder": "Descripción opcional del tipo",
+      "removeTier": "Eliminar",
+      "noTiers": "Agrega al menos un tipo de entrada para continuar."
+    },
+    "review": {
+      "title": "Revisar y Publicar",
+      "subtitle": "Revisa los detalles de tu evento antes de publicar.",
+      "eventDetails": "Detalles del Evento",
+      "dateAndVenue": "Fecha y Lugar",
+      "ticketTiers": "Tipos de Entrada",
+      "totalCapacity": "Capacidad Total",
+      "priceRange": "Rango de Precios",
+      "publishAs": "Publicar como",
+      "draft": "Guardar como Borrador",
+      "live": "Publicar en Vivo (En Venta)"
+    },
+    "categories": {
+      "MUSIC": "Música",
+      "CONFERENCE": "Conferencia",
+      "SPORTS": "Deportes",
+      "THEATER": "Teatro",
+      "FESTIVAL": "Festival",
+      "COMEDY": "Comedia",
+      "WORKSHOP": "Taller",
+      "NETWORKING": "Networking",
+      "OTHER": "Otro"
+    },
+    "currencies": {
+      "USD": "USD ($)",
+      "EUR": "EUR (€)",
+      "GBP": "GBP (£)",
+      "MXN": "MXN ($)",
+      "COP": "COP ($)"
+    },
+    "success": "¡Evento creado exitosamente!",
+    "error": "Error al crear el evento. Inténtalo de nuevo."
+  },
   "sidebar": {
     "dashboard": "Panel",
     "events": "Eventos",
@@ -52,5 +173,14 @@
   "header": {
     "search": "Buscar eventos, órdenes...",
     "notifications": "Notificaciones"
+  },
+  "auth": {
+    "subtitle": "Panel del Organizador",
+    "continueWithGoogle": "Continuar con Google",
+    "loading": "Iniciando sesión...",
+    "signOut": "Cerrar sesión",
+    "unauthorized": "Acceso denegado. Solo organizadores y administradores pueden acceder al panel.",
+    "noAccount": "No se encontró una cuenta con este correo. Contacta a un administrador para obtener acceso.",
+    "footer": "Al iniciar sesión aceptas nuestros Términos de Servicio."
   }
 }
