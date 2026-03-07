@@ -78,7 +78,9 @@
       "capacity": "Capacidad Total",
       "ticketsSold": "Entradas Vendidas",
       "revenue": "Ingresos",
-      "status": "Estado"
+      "status": "Estado",
+      "shareEvent": "Compartir Evento",
+      "linkCopied": "¡Enlace del evento copiado!"
     }
   },
   "wizard": {

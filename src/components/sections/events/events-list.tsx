@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Icon } from "@/components/shared/icon";
@@ -53,6 +54,17 @@ function formatDateRange(start: Date, end: Date | null): string {
 
 export function EventsList({ result }: { result: PaginatedResult<EventItem> }) {
   const t = useTranslations("events");
+  const detailT = useTranslations("events.detail");
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  function handleShare(e: React.MouseEvent, slug: string, id: string) {
+    e.preventDefault();
+    e.stopPropagation();
+    const url = `${window.location.origin}/events/${slug}`;
+    navigator.clipboard.writeText(url);
+    setCopiedId(id);
+    setTimeout(() => setCopiedId(null), 2000);
+  }
 
   const statusOptions = [
     { label: t("status.ON_SALE"), value: "ON_SALE" },
@@ -154,9 +166,13 @@ export function EventsList({ result }: { result: PaginatedResult<EventItem> }) {
                           >
                             {t(`status.${event.status}`)}
                           </span>
-                          {/* More menu */}
-                          <button className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-slate-100">
-                            <Icon name="more_horiz" size={20} />
+                          {/* Share */}
+                          <button
+                            onClick={(e) => handleShare(e, event.slug, event.id)}
+                            className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-slate-100"
+                            title={detailT("shareEvent")}
+                          >
+                            <Icon name={copiedId === event.id ? "check" : "share"} size={18} />
                           </button>
                         </div>
                       </div>

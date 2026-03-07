@@ -78,7 +78,9 @@
       "capacity": "Total Capacity",
       "ticketsSold": "Tickets Sold",
       "revenue": "Revenue",
-      "status": "Status"
+      "status": "Status",
+      "shareEvent": "Share Event",
+      "linkCopied": "Event link copied to clipboard!"
     }
   },
   "wizard": {

@@ -186,7 +186,7 @@ export function EventDetailView({
   return (
     <div className="mx-auto max-w-4xl">
       {/* Header */}
-      <div className="mb-6 flex items-center justify-between">
+      <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3">
           <Link
             href="/events"
@@ -195,9 +195,9 @@ export function EventDetailView({
             <Icon name="arrow_back" size={20} />
           </Link>
           <div>
-            <h1 className="text-xl font-bold text-foreground">{event.title}</h1>
+            <h1 className="text-lg font-bold text-foreground sm:text-xl">{event.title}</h1>
             <div className="mt-0.5 flex items-center gap-2 text-xs text-muted-foreground">
-              <span>{t("eventId")}: {event.id.slice(0, 12)}...</span>
+              <span className="hidden sm:inline">{t("eventId")}: {event.id.slice(0, 12)}...</span>
               <span
                 className={cn(
                   "inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-medium",
@@ -209,14 +209,30 @@ export function EventDetailView({
             </div>
           </div>
         </div>
-        <button
-          onClick={handleSave}
-          disabled={saving}
-          className="flex items-center gap-2 rounded-xl bg-charcoal px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-charcoal/90 disabled:opacity-50"
-        >
-          <Icon name="save" size={18} />
-          {saving ? t("saving") : t("save")}
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => {
+              const url = `${window.location.origin}/events/${event.slug}`;
+              navigator.clipboard.writeText(url);
+              setSuccessMsg(t("linkCopied"));
+              setTimeout(() => setSuccessMsg(null), 3000);
+            }}
+            className="flex h-9 w-9 items-center justify-center rounded-xl border border-border text-muted-foreground transition-colors hover:bg-slate-50 hover:text-foreground"
+            title={t("shareEvent")}
+          >
+            <Icon name="share" size={18} />
+          </button>
+          <button
+            onClick={handleSave}
+            disabled={saving}
+            className="flex items-center gap-1.5 rounded-xl bg-charcoal px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-charcoal/90 disabled:opacity-50 sm:gap-2 sm:px-5 sm:py-2.5 sm:text-sm"
+          >
+            <Icon name="save" size={16} className="sm:hidden" />
+            <Icon name="save" size={18} className="hidden sm:block" />
+            <span className="hidden sm:inline">{saving ? t("saving") : t("save")}</span>
+            <span className="sm:hidden">{saving ? "..." : t("save")}</span>
+          </button>
+        </div>
       </div>
 
       {/* Messages */}
@@ -232,7 +248,7 @@ export function EventDetailView({
       )}
 
       {/* Stats row */}
-      <div className="mb-6 grid grid-cols-4 gap-4">
+      <div className="mb-6 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
         {[
           { label: t("capacity"), value: totalCapacity.toLocaleString(), icon: "groups" },
           { label: t("ticketsSold"), value: totalSold.toLocaleString(), icon: "sell" },
@@ -250,7 +266,7 @@ export function EventDetailView({
       </div>
 
       {/* Tabs */}
-      <div className="mb-6 flex gap-1 rounded-xl bg-slate-100 p-1">
+      <div className="mb-6 flex gap-1 overflow-x-auto rounded-xl bg-slate-100 p-1">
         {tabs.map(({ key, icon }) => (
           <button
             key={key}
@@ -295,7 +311,7 @@ export function EventDetailView({
                 className="h-10 w-full rounded-lg border border-input bg-background px-3 font-mono text-sm outline-none focus:ring-2 focus:ring-ring/20"
               />
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
                 <label className="mb-1.5 block text-sm font-medium text-foreground">
                   Category
@@ -358,7 +374,7 @@ export function EventDetailView({
         {/* Date & Venue Tab */}
         {tab === "dateVenue" && (
           <div className="space-y-5">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
                 <label className="mb-1.5 block text-sm font-medium text-foreground">
                   Start Date & Time
@@ -393,7 +409,7 @@ export function EventDetailView({
                 className="h-10 w-full rounded-lg border border-input bg-background px-3 text-sm outline-none focus:ring-2 focus:ring-ring/20"
               />
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
                 <label className="mb-1.5 block text-sm font-medium text-foreground">
                   Venue
@@ -487,7 +503,7 @@ export function EventDetailView({
                       className="h-9 w-full rounded-lg border border-input bg-background px-3 text-sm outline-none focus:ring-2 focus:ring-ring/20"
                     />
                   </div>
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
                     <div>
                       <label className="mb-1 block text-xs font-medium text-foreground">
                         {ticketT("price")}
