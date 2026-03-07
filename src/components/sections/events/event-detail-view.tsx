@@ -44,14 +44,26 @@ interface EventData {
 type Tab = "general" | "dateVenue" | "tickets" | "danger";
 
 const CATEGORIES = [
-  "MUSIC", "CONFERENCE", "SPORTS", "THEATER", "FESTIVAL",
-  "COMEDY", "WORKSHOP", "NETWORKING", "OTHER",
+  "MUSIC",
+  "CONFERENCE",
+  "SPORTS",
+  "THEATER",
+  "FESTIVAL",
+  "COMEDY",
+  "WORKSHOP",
+  "NETWORKING",
+  "OTHER",
 ] as const;
 
 const CURRENCIES = ["USD", "EUR", "GBP", "MXN", "COP"] as const;
 
 const STATUSES = [
-  "DRAFT", "SCHEDULED", "ON_SALE", "SOLD_OUT", "CANCELLED", "COMPLETED",
+  "DRAFT",
+  "SCHEDULED",
+  "ON_SALE",
+  "SOLD_OUT",
+  "CANCELLED",
+  "COMPLETED",
 ] as const;
 
 const statusStyles: Record<string, string> = {
@@ -102,7 +114,9 @@ export function EventDetailView({
   const [doorsOpen, setDoorsOpen] = useState(toLocalDatetime(event.doorsOpen));
   const [venueId, setVenueId] = useState(event.venue?.id ?? "");
   const [currency, setCurrency] = useState(event.currency);
-  const [ticketTiers, setTicketTiers] = useState<(TicketTierInput & { id?: string })[]>(
+  const [ticketTiers, setTicketTiers] = useState<
+    (TicketTierInput & { id?: string })[]
+  >(
     event.ticketTiers.map((t) => ({
       id: t.id,
       name: t.name,
@@ -114,9 +128,15 @@ export function EventDetailView({
   );
 
   // Computed stats
-  const totalCapacity = event.ticketTiers.reduce((s, t) => s + t.totalQuantity, 0);
+  const totalCapacity = event.ticketTiers.reduce(
+    (s, t) => s + t.totalQuantity,
+    0
+  );
   const totalSold = event.ticketTiers.reduce((s, t) => s + t.soldCount, 0);
-  const totalRevenue = event.ticketTiers.reduce((s, t) => s + t.soldCount * t.price, 0);
+  const totalRevenue = event.ticketTiers.reduce(
+    (s, t) => s + t.soldCount * t.price,
+    0
+  );
 
   const handleSave = async () => {
     setSaving(true);
@@ -162,7 +182,13 @@ export function EventDetailView({
   const addTier = () => {
     setTicketTiers([
       ...ticketTiers,
-      { name: "", description: "", price: 0, totalQuantity: 100, maxPerOrder: 10 },
+      {
+        name: "",
+        description: "",
+        price: 0,
+        totalQuantity: 100,
+        maxPerOrder: 10,
+      },
     ]);
   };
 
@@ -195,9 +221,13 @@ export function EventDetailView({
             <Icon name="arrow_back" size={20} />
           </Link>
           <div>
-            <h1 className="text-lg font-bold text-foreground sm:text-xl">{event.title}</h1>
+            <h1 className="text-lg font-bold text-foreground sm:text-xl">
+              {event.title}
+            </h1>
             <div className="mt-0.5 flex items-center gap-2 text-xs text-muted-foreground">
-              <span className="hidden sm:inline">{t("eventId")}: {event.id.slice(0, 12)}...</span>
+              <span className="hidden sm:inline">
+                {t("eventId")}: {event.id.slice(0, 12)}...
+              </span>
               <span
                 className={cn(
                   "inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-medium",
@@ -227,9 +257,10 @@ export function EventDetailView({
             disabled={saving}
             className="flex items-center gap-1.5 rounded-xl bg-charcoal px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-charcoal/90 disabled:opacity-50 sm:gap-2 sm:px-5 sm:py-2.5 sm:text-sm"
           >
-            <Icon name="save" size={16} className="sm:hidden" />
-            <Icon name="save" size={18} className="hidden sm:block" />
-            <span className="hidden sm:inline">{saving ? t("saving") : t("save")}</span>
+            <Icon name="save" size={16} className="hidden sm:block" />
+            <span className="hidden sm:inline">
+              {saving ? t("saving") : t("save")}
+            </span>
             <span className="sm:hidden">{saving ? "..." : t("save")}</span>
           </button>
         </div>
@@ -250,9 +281,21 @@ export function EventDetailView({
       {/* Stats row */}
       <div className="mb-6 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
         {[
-          { label: t("capacity"), value: totalCapacity.toLocaleString(), icon: "groups" },
-          { label: t("ticketsSold"), value: totalSold.toLocaleString(), icon: "sell" },
-          { label: t("revenue"), value: `$${totalRevenue.toLocaleString()}`, icon: "payments" },
+          {
+            label: t("capacity"),
+            value: totalCapacity.toLocaleString(),
+            icon: "groups",
+          },
+          {
+            label: t("ticketsSold"),
+            value: totalSold.toLocaleString(),
+            icon: "sell",
+          },
+          {
+            label: t("revenue"),
+            value: `$${totalRevenue.toLocaleString()}`,
+            icon: "payments",
+          },
           { label: t("status"), value: statusT(event.status), icon: "flag" },
         ].map((stat) => (
           <div key={stat.label} className="organic-card p-4">
@@ -260,7 +303,9 @@ export function EventDetailView({
               <Icon name={stat.icon} size={14} />
               {stat.label}
             </div>
-            <p className="mt-1 text-lg font-bold text-foreground">{stat.value}</p>
+            <p className="mt-1 text-lg font-bold text-foreground">
+              {stat.value}
+            </p>
           </div>
         ))}
       </div>
@@ -322,7 +367,9 @@ export function EventDetailView({
                   className="h-10 w-full rounded-lg border border-input bg-background px-3 text-sm outline-none focus:ring-2 focus:ring-ring/20"
                 >
                   {CATEGORIES.map((cat) => (
-                    <option key={cat} value={cat}>{catT(cat)}</option>
+                    <option key={cat} value={cat}>
+                      {catT(cat)}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -336,7 +383,9 @@ export function EventDetailView({
                   className="h-10 w-full rounded-lg border border-input bg-background px-3 text-sm outline-none focus:ring-2 focus:ring-ring/20"
                 >
                   {STATUSES.map((s) => (
-                    <option key={s} value={s}>{statusT(s)}</option>
+                    <option key={s} value={s}>
+                      {statusT(s)}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -364,7 +413,11 @@ export function EventDetailView({
               />
               {coverUrl && (
                 <div className="mt-2 h-32 w-full overflow-hidden rounded-lg bg-slate-100">
-                  <img src={coverUrl} alt="Cover" className="h-full w-full object-cover" />
+                  <img
+                    src={coverUrl}
+                    alt="Cover"
+                    className="h-full w-full object-cover"
+                  />
                 </div>
               )}
             </div>
@@ -421,7 +474,9 @@ export function EventDetailView({
                 >
                   <option value="">No venue (online)</option>
                   {venues.map((v) => (
-                    <option key={v.id} value={v.id}>{v.name}</option>
+                    <option key={v.id} value={v.id}>
+                      {v.name}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -435,7 +490,9 @@ export function EventDetailView({
                   className="h-10 w-full rounded-lg border border-input bg-background px-3 text-sm outline-none focus:ring-2 focus:ring-ring/20"
                 >
                   {CURRENCIES.map((cur) => (
-                    <option key={cur} value={cur}>{curT(cur)}</option>
+                    <option key={cur} value={cur}>
+                      {curT(cur)}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -443,11 +500,15 @@ export function EventDetailView({
             <div className="rounded-lg bg-slate-50 p-4 text-xs text-muted-foreground">
               <div className="flex items-center gap-2">
                 <Icon name="info" size={14} />
-                <span>{t("created")}: {new Date(event.createdAt).toLocaleString()}</span>
+                <span>
+                  {t("created")}: {new Date(event.createdAt).toLocaleString()}
+                </span>
               </div>
               <div className="mt-1 flex items-center gap-2">
                 <Icon name="update" size={14} />
-                <span>{t("updated")}: {new Date(event.updatedAt).toLocaleString()}</span>
+                <span>
+                  {t("updated")}: {new Date(event.updatedAt).toLocaleString()}
+                </span>
               </div>
             </div>
           </div>
@@ -457,7 +518,9 @@ export function EventDetailView({
         {tab === "tickets" && (
           <div className="space-y-5">
             <div className="flex items-center justify-between">
-              <h3 className="text-sm font-semibold text-foreground">{ticketT("title")}</h3>
+              <h3 className="text-sm font-semibold text-foreground">
+                {ticketT("title")}
+              </h3>
               <button
                 onClick={addTier}
                 className="flex items-center gap-1.5 rounded-lg bg-slate-100 px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-slate-200"
@@ -470,12 +533,16 @@ export function EventDetailView({
             {ticketTiers.map((tier, i) => {
               const originalTier = event.ticketTiers[i];
               const sold = originalTier?.soldCount ?? 0;
-              const salesPercent = tier.totalQuantity > 0
-                ? Math.round((sold / tier.totalQuantity) * 100)
-                : 0;
+              const salesPercent =
+                tier.totalQuantity > 0
+                  ? Math.round((sold / tier.totalQuantity) * 100)
+                  : 0;
 
               return (
-                <div key={i} className="rounded-xl border border-border p-4 space-y-4">
+                <div
+                  key={i}
+                  className="rounded-xl border border-border p-4 space-y-4"
+                >
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                       Tier {i + 1}
@@ -513,7 +580,11 @@ export function EventDetailView({
                         min="0"
                         step="0.01"
                         value={tier.price}
-                        onChange={(e) => updateTier(i, { price: parseFloat(e.target.value) || 0 })}
+                        onChange={(e) =>
+                          updateTier(i, {
+                            price: parseFloat(e.target.value) || 0,
+                          })
+                        }
                         className="h-9 w-full rounded-lg border border-input bg-background px-3 text-sm outline-none focus:ring-2 focus:ring-ring/20"
                       />
                     </div>
@@ -525,7 +596,11 @@ export function EventDetailView({
                         type="number"
                         min="1"
                         value={tier.totalQuantity}
-                        onChange={(e) => updateTier(i, { totalQuantity: parseInt(e.target.value) || 1 })}
+                        onChange={(e) =>
+                          updateTier(i, {
+                            totalQuantity: parseInt(e.target.value) || 1,
+                          })
+                        }
                         className="h-9 w-full rounded-lg border border-input bg-background px-3 text-sm outline-none focus:ring-2 focus:ring-ring/20"
                       />
                     </div>
@@ -537,7 +612,11 @@ export function EventDetailView({
                         type="number"
                         min="1"
                         value={tier.maxPerOrder}
-                        onChange={(e) => updateTier(i, { maxPerOrder: parseInt(e.target.value) || 1 })}
+                        onChange={(e) =>
+                          updateTier(i, {
+                            maxPerOrder: parseInt(e.target.value) || 1,
+                          })
+                        }
                         className="h-9 w-full rounded-lg border border-input bg-background px-3 text-sm outline-none focus:ring-2 focus:ring-ring/20"
                       />
                     </div>
@@ -549,7 +628,9 @@ export function EventDetailView({
                     <input
                       type="text"
                       value={tier.description}
-                      onChange={(e) => updateTier(i, { description: e.target.value })}
+                      onChange={(e) =>
+                        updateTier(i, { description: e.target.value })
+                      }
                       placeholder={ticketT("descriptionPlaceholder")}
                       className="h-9 w-full rounded-lg border border-input bg-background px-3 text-sm outline-none placeholder:text-muted-foreground focus:ring-2 focus:ring-ring/20"
                     />
@@ -561,14 +642,18 @@ export function EventDetailView({
                         <div
                           className={cn(
                             "h-full rounded-full",
-                            salesPercent >= 90 ? "bg-emerald-500"
-                              : salesPercent >= 50 ? "bg-blue-500"
+                            salesPercent >= 90
+                              ? "bg-emerald-500"
+                              : salesPercent >= 50
+                              ? "bg-blue-500"
                               : "bg-amber-400"
                           )}
                           style={{ width: `${salesPercent}%` }}
                         />
                       </div>
-                      <span className="text-xs text-muted-foreground">{salesPercent}%</span>
+                      <span className="text-xs text-muted-foreground">
+                        {salesPercent}%
+                      </span>
                     </div>
                   )}
                 </div>
