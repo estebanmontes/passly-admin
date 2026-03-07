@@ -99,7 +99,7 @@ export function OrderDetailView({ order }: { order: OrderData }) {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-center gap-4">
+      <div className="flex flex-wrap items-center gap-3 sm:gap-4">
         <Link
           href="/orders"
           className="flex h-9 w-9 items-center justify-center rounded-xl border border-border transition-colors hover:bg-slate-50"
@@ -107,7 +107,7 @@ export function OrderDetailView({ order }: { order: OrderData }) {
           <Icon name="arrow_back" size={18} />
         </Link>
         <div className="flex-1">
-          <h1 className="text-2xl font-bold text-foreground">
+          <h1 className="text-xl font-bold text-foreground sm:text-2xl">
             {order.orderNumber}
           </h1>
         </div>
@@ -128,7 +128,7 @@ export function OrderDetailView({ order }: { order: OrderData }) {
       )}
 
       {/* Summary + Customer */}
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <div className="organic-card p-6">
           <h2 className="mb-4 text-base font-semibold text-foreground">
             {t("detail.orderSummary")}
@@ -213,6 +213,7 @@ export function OrderDetailView({ order }: { order: OrderData }) {
             {t("detail.orderItems")}
           </h2>
         </div>
+        <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
             <tr className="border-t border-border">
@@ -252,6 +253,7 @@ export function OrderDetailView({ order }: { order: OrderData }) {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
 
       {/* Passes */}
@@ -262,6 +264,7 @@ export function OrderDetailView({ order }: { order: OrderData }) {
               {t("detail.passes")}
             </h2>
           </div>
+          <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
               <tr className="border-t border-border">
@@ -303,6 +306,7 @@ export function OrderDetailView({ order }: { order: OrderData }) {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       )}
 

@@ -36,7 +36,7 @@ export function AnalyticsDashboard({ data }: { data: AnalyticsData }) {
         <RevenueChart data={data.dailyRevenue} />
       </div>
 
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <SalesByEventChart data={data.salesByEvent} />
         <SalesByTierChart data={data.salesByTier} />
       </div>

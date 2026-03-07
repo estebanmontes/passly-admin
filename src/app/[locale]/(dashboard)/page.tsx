@@ -37,10 +37,10 @@ export default async function DashboardPage() {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 lg:space-y-8">
       {/* Welcome */}
       <div>
-        <h1 className="text-2xl font-bold text-foreground">
+        <h1 className="text-xl font-bold text-foreground sm:text-2xl">
           {t("welcome")}{session?.user.name ? `, ${session.user.name}` : ""}
         </h1>
         <p className="mt-1 text-sm text-muted-foreground">

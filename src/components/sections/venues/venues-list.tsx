@@ -50,11 +50,11 @@ export function VenuesList({ result }: VenuesListProps) {
   return (
     <>
       {/* Toolbar */}
-      <div className="flex items-center gap-3">
-        <div className="w-80">
+      <div className="flex flex-wrap items-center gap-3">
+        <div className="w-full sm:w-80">
           <SearchInput placeholder={t("search")} />
         </div>
-        <div className="flex-1" />
+        <div className="hidden flex-1 sm:block" />
         <Link
           href="/venues/new"
           className="flex items-center gap-2 rounded-2xl bg-charcoal px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-charcoal/90"

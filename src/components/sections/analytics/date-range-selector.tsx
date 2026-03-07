@@ -23,11 +23,11 @@ export function DateRangeSelector() {
   }
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex flex-wrap items-center gap-2">
       <span className="text-sm font-medium text-muted-foreground">
         {t("dateRange")}:
       </span>
-      <div className="flex gap-1 rounded-lg bg-slate-100 p-1">
+      <div className="flex gap-1 overflow-x-auto rounded-lg bg-slate-100 p-1">
         {presets.map((preset) => (
           <button
             key={preset}

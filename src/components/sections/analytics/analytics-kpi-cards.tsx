@@ -41,7 +41,7 @@ export function AnalyticsKpiCards({ kpis }: { kpis: KpiData }) {
   ];
 
   return (
-    <div className="grid grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
       {cards.map((card) => (
         <div key={card.label} className="organic-card p-5">
           <div className="flex items-center gap-3">

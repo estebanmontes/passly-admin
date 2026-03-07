@@ -26,7 +26,7 @@ export function AttendeeFilters({ eventOptions }: AttendeeFiltersProps) {
 
   return (
     <div className="flex flex-wrap items-center gap-3">
-      <div className="w-80">
+      <div className="w-full sm:w-80">
         <SearchInput placeholder={t("search")} />
       </div>
       <FilterSelect

@@ -53,7 +53,7 @@ export function DataTablePagination({
   if (totalPages <= 1) return null;
 
   return (
-    <div className="flex items-center justify-between px-2 py-4">
+    <div className="flex flex-col items-center gap-3 px-2 py-4 sm:flex-row sm:justify-between">
       <div className="flex items-center gap-2 text-sm text-muted-foreground">
         <span>
           {startItem}–{endItem} of {total}

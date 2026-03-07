@@ -108,7 +108,7 @@ export function VenueDetailView({ venue }: { venue: VenueData }) {
         >
           <Icon name="arrow_back" size={18} />
         </Link>
-        <h1 className="text-2xl font-bold text-foreground">{venue.name}</h1>
+        <h1 className="text-xl font-bold text-foreground sm:text-2xl">{venue.name}</h1>
       </div>
 
       {error && (
@@ -128,7 +128,7 @@ export function VenueDetailView({ venue }: { venue: VenueData }) {
         <h2 className="mb-4 text-base font-semibold text-foreground">
           {t("detail.venueInfo")}
         </h2>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div className="col-span-2">
             <label className="mb-1 block text-sm font-medium text-foreground">
               {t("form.name")}
@@ -238,6 +238,7 @@ export function VenueDetailView({ venue }: { venue: VenueData }) {
             {t("detail.noLinkedEvents")}
           </div>
         ) : (
+          <div className="overflow-x-auto">
           <table className="w-full">
             <tbody>
               {venue.events.map((event) => (
@@ -277,6 +278,7 @@ export function VenueDetailView({ venue }: { venue: VenueData }) {
               ))}
             </tbody>
           </table>
+          </div>
         )}
       </div>
 

@@ -67,7 +67,7 @@ export function EventsList({ result }: { result: PaginatedResult<EventItem> }) {
     <>
       {/* Search & Filters */}
       <div className="flex flex-wrap items-center gap-3">
-        <div className="w-80">
+        <div className="w-full sm:w-80">
           <SearchInput placeholder={t("search")} />
         </div>
         <FilterSelect
@@ -105,9 +105,9 @@ export function EventsList({ result }: { result: PaginatedResult<EventItem> }) {
 
               return (
                 <Link key={event.id} href={`/events/${event.id}`} className="block organic-card p-5 transition-shadow hover:shadow-md">
-                  <div className="flex items-start gap-5">
+                  <div className="flex items-start gap-3 sm:gap-5">
                     {/* Thumbnail */}
-                    <div className="flex h-20 w-20 flex-shrink-0 items-center justify-center overflow-hidden rounded-xl bg-slate-100">
+                    <div className="hidden h-20 w-20 flex-shrink-0 items-center justify-center overflow-hidden rounded-xl bg-slate-100 sm:flex">
                       {event.coverUrl ? (
                         <img
                           src={event.coverUrl}

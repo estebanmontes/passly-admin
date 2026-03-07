@@ -67,15 +67,15 @@ export function SettingsView({ organizer, user }: SettingsViewProps) {
   ];
 
   return (
-    <div className="flex gap-6">
-      {/* Sidebar tabs */}
-      <div className="w-56 space-y-1">
+    <div className="flex flex-col gap-6 lg:flex-row">
+      {/* Tabs - horizontal on mobile, vertical sidebar on desktop */}
+      <div className="flex gap-1 overflow-x-auto lg:w-56 lg:flex-col lg:gap-0 lg:space-y-1">
         {tabs.map((item) => (
           <button
             key={item.key}
             onClick={() => setTab(item.key)}
             className={cn(
-              "flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors",
+              "flex shrink-0 items-center gap-2 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors lg:w-full lg:gap-3",
               tab === item.key
                 ? "bg-slate-50 text-indigo-600"
                 : "text-muted-foreground hover:bg-slate-50 hover:text-foreground"
@@ -93,7 +93,7 @@ export function SettingsView({ organizer, user }: SettingsViewProps) {
       </div>
 
       {/* Content */}
-      <div className="flex-1">
+      <div className="min-w-0 flex-1">
         {error && (
           <div className="mb-4 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700">
             {error}
