@@ -15,7 +15,7 @@ export function SignInCard() {
     setLoading(true);
     await signIn.social({
       provider: "google",
-      callbackURL: "/",
+      callbackURL: window.location.origin + "/",
     });
   };
 

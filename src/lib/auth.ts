@@ -11,6 +11,12 @@ export const auth = betterAuth({
     "https://myevent.passly.lat",
     "https://mievento.passly.lat",
   ],
+  advanced: {
+    crossSubDomainCookies: {
+      enabled: true,
+      domain: ".passly.lat",
+    },
+  },
   socialProviders: {
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID!,
