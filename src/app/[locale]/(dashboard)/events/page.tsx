@@ -2,18 +2,30 @@ import { headers } from "next/headers";
 import { getTranslations } from "next-intl/server";
 import { auth } from "@/lib/auth";
 import { getOrganizerByUserId } from "@/lib/queries/events";
-import { getEventsByOrganizer } from "@/lib/queries/events";
+import { getEventsByOrganizerPaginated } from "@/lib/queries/events";
+import { parsePaginationParams } from "@/lib/utils/search-params";
 import { EventsList } from "@/components/sections/events/events-list";
 import { Icon } from "@/components/shared/icon";
 import { Link } from "@/i18n/navigation";
 
-export default async function EventsPage() {
+export default async function EventsPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
   const t = await getTranslations("events");
   const session = await auth.api.getSession({ headers: await headers() });
   const organizer = session
     ? await getOrganizerByUserId(session.user.id)
     : null;
-  const events = organizer ? await getEventsByOrganizer(organizer.id) : [];
+
+  const sp = await searchParams;
+  const params = parsePaginationParams(sp);
+  const statusFilter = typeof sp.status === "string" ? sp.status : undefined;
+
+  const result = organizer
+    ? await getEventsByOrganizerPaginated(organizer.id, params, statusFilter)
+    : { data: [], total: 0, page: 1, pageSize: 10, totalPages: 0 };
 
   return (
     <div className="space-y-6">
@@ -30,7 +42,7 @@ export default async function EventsPage() {
       </div>
 
       {/* Events List */}
-      <EventsList events={events} />
+      <EventsList result={result} />
     </div>
   );
 }

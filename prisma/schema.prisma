@@ -209,6 +209,7 @@ model Venue {
   organizer Organizer @relation(fields: [organizerId], references: [id], onDelete: Cascade)
   events    Event[]
 
+  @@index([organizerId])
   @@map("venues")
 }
 
@@ -335,6 +336,8 @@ model Order {
 
   @@index([userId])
   @@index([eventId])
+  @@index([status])
+  @@index([createdAt])
   @@map("orders")
 }
 
@@ -349,6 +352,8 @@ model OrderItem {
   order      Order      @relation(fields: [orderId], references: [id], onDelete: Cascade)
   ticketTier TicketTier @relation(fields: [ticketTierId], references: [id], onDelete: Cascade)
 
+  @@index([orderId])
+  @@index([ticketTierId])
   @@map("order_items")
 }
 
@@ -367,6 +372,9 @@ model Pass {
   user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([qrCode])
+  @@index([status])
+  @@index([orderId])
+  @@index([userId])
   @@map("passes")
 }
 

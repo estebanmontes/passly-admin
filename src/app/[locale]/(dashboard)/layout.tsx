@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { Sidebar } from "@/components/layout/sidebar";
 import { DashboardHeader } from "@/components/layout/dashboard-header";
+import { MobileBottomNav } from "@/components/layout/mobile-bottom-nav";
 
 export default async function DashboardLayout({
   children,
@@ -29,10 +30,11 @@ export default async function DashboardLayout({
   return (
     <div className="min-h-screen bg-background">
       <Sidebar />
-      <div className="ml-[264px]">
+      <div className="lg:ml-[264px]">
         <DashboardHeader user={session.user} />
-        <main className="p-8">{children}</main>
+        <main className="p-4 pb-20 sm:p-6 lg:p-8 lg:pb-8">{children}</main>
       </div>
+      <MobileBottomNav />
     </div>
   );
 }
