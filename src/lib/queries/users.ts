@@ -20,7 +20,7 @@ export async function getUsers(
     ];
   }
 
-  const [data, total] = await Promise.all([
+  const [rawData, total] = await Promise.all([
     db.user.findMany({
       where,
       select: {
@@ -44,6 +44,18 @@ export async function getUsers(
     }),
     db.user.count({ where }),
   ]);
+
+  const data = rawData.map((user) => ({
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    image: user.image,
+    role: user.role,
+    emailVerified: user.emailVerified,
+    createdAt: user.createdAt,
+    orderCount: user._count.orders,
+    passCount: user._count.passes,
+  }));
 
   return buildPaginatedResult(data, total, params);
 }

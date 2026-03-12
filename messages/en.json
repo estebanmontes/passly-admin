@@ -47,6 +47,19 @@
     "sold": "Sold",
     "search": "Search events...",
     "filterByStatus": "All Statuses",
+    "filterByCategory": "All Categories",
+    "filterByOrganizer": "All Organizers",
+    "categories": {
+      "MUSIC": "Music",
+      "CONFERENCE": "Conference",
+      "SPORTS": "Sports",
+      "THEATER": "Theater",
+      "FESTIVAL": "Festival",
+      "COMEDY": "Comedy",
+      "WORKSHOP": "Workshop",
+      "NETWORKING": "Networking",
+      "OTHER": "Other"
+    },
     "status": {
       "ON_SALE": "Live",
       "DRAFT": "Draft",

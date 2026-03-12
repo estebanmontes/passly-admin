@@ -20,7 +20,8 @@ interface UserItem {
   role: string;
   emailVerified: boolean;
   createdAt: Date;
-  _count: { orders: number; passes: number };
+  orderCount: number;
+  passCount: number;
 }
 
 const roleStyles: Record<string, string> = {
@@ -141,7 +142,7 @@ export function UsersTable({
                     </td>
                     <td className="px-6 py-4">
                       <p className="text-sm text-muted-foreground">
-                        {user._count.orders}
+                        {user.orderCount}
                       </p>
                     </td>
                     <td className="px-6 py-4">
