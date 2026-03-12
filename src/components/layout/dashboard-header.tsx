@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { Icon } from "@/components/shared/icon";
 import { signOut } from "@/lib/auth-client";
 import { useSidebarStore } from "@/lib/stores/sidebar-store";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/navigation";
 
 interface DashboardHeaderProps {
   user: {
