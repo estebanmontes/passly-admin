@@ -47,6 +47,19 @@
     "sold": "Vendidos",
     "search": "Buscar eventos...",
     "filterByStatus": "Todos los estados",
+    "filterByCategory": "Todas las categorías",
+    "filterByOrganizer": "Todos los organizadores",
+    "categories": {
+      "MUSIC": "Música",
+      "CONFERENCE": "Conferencia",
+      "SPORTS": "Deportes",
+      "THEATER": "Teatro",
+      "FESTIVAL": "Festival",
+      "COMEDY": "Comedia",
+      "WORKSHOP": "Taller",
+      "NETWORKING": "Networking",
+      "OTHER": "Otro"
+    },
     "status": {
       "ON_SALE": "En Vivo",
       "DRAFT": "Borrador",

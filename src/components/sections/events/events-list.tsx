@@ -21,10 +21,18 @@ interface EventItem {
   slug: string;
   coverUrl: string | null;
   status: string;
+  category?: string;
   startDate: Date;
   endDate: Date | null;
   venue: { name: string } | null;
+  organizer?: { id: string; name: string };
   ticketTiers: EventTier[];
+}
+
+interface EventsListProps {
+  result: PaginatedResult<EventItem>;
+  isAdmin?: boolean;
+  organizerOptions?: { id: string; name: string }[];
 }
 
 const statusStyles: Record<string, string> = {
@@ -52,7 +60,11 @@ function formatDateRange(start: Date, end: Date | null): string {
   return `${s.toLocaleDateString("en-US", { month: "short", day: "numeric" })}-${e.toLocaleDateString("en-US", opts)}`;
 }
 
-export function EventsList({ result }: { result: PaginatedResult<EventItem> }) {
+export function EventsList({
+  result,
+  isAdmin = false,
+  organizerOptions = [],
+}: EventsListProps) {
   const t = useTranslations("events");
   const detailT = useTranslations("events.detail");
   const [copiedId, setCopiedId] = useState<string | null>(null);
@@ -75,6 +87,23 @@ export function EventsList({ result }: { result: PaginatedResult<EventItem> }) {
     { label: t("status.COMPLETED"), value: "COMPLETED" },
   ];
 
+  const categoryOptions = [
+    { label: t("categories.MUSIC"), value: "MUSIC" },
+    { label: t("categories.CONFERENCE"), value: "CONFERENCE" },
+    { label: t("categories.SPORTS"), value: "SPORTS" },
+    { label: t("categories.THEATER"), value: "THEATER" },
+    { label: t("categories.FESTIVAL"), value: "FESTIVAL" },
+    { label: t("categories.COMEDY"), value: "COMEDY" },
+    { label: t("categories.WORKSHOP"), value: "WORKSHOP" },
+    { label: t("categories.NETWORKING"), value: "NETWORKING" },
+    { label: t("categories.OTHER"), value: "OTHER" },
+  ];
+
+  const orgOptions = organizerOptions.map((o) => ({
+    label: o.name,
+    value: o.id,
+  }));
+
   return (
     <>
       {/* Search & Filters */}
@@ -87,6 +116,20 @@ export function EventsList({ result }: { result: PaginatedResult<EventItem> }) {
           options={statusOptions}
           placeholder={t("filterByStatus")}
         />
+        {isAdmin && (
+          <>
+            <FilterSelect
+              paramKey="category"
+              options={categoryOptions}
+              placeholder={t("filterByCategory")}
+            />
+            <FilterSelect
+              paramKey="organizerId"
+              options={orgOptions}
+              placeholder={t("filterByOrganizer")}
+            />
+          </>
+        )}
       </div>
 
       {result.data.length === 0 ? (
@@ -142,7 +185,7 @@ export function EventsList({ result }: { result: PaginatedResult<EventItem> }) {
                           <h3 className="text-base font-semibold text-foreground">
                             {event.title}
                           </h3>
-                          <div className="mt-1 flex items-center gap-3 text-xs text-muted-foreground">
+                          <div className="mt-1 flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
                             <span className="flex items-center gap-1">
                               <Icon name="calendar_today" size={14} />
                               {formatDateRange(event.startDate, event.endDate)}
@@ -151,6 +194,12 @@ export function EventsList({ result }: { result: PaginatedResult<EventItem> }) {
                               <span className="flex items-center gap-1">
                                 <Icon name="location_on" size={14} />
                                 {event.venue.name}
+                              </span>
+                            )}
+                            {isAdmin && event.organizer && (
+                              <span className="flex items-center gap-1">
+                                <Icon name="business" size={14} />
+                                {event.organizer.name}
                               </span>
                             )}
                           </div>

@@ -52,6 +52,62 @@ export async function getEventsByOrganizerPaginated(
   return buildPaginatedResult(data, total, params);
 }
 
+export async function getAllEventsPaginated(
+  params: PaginationParams,
+  filters: {
+    status?: string;
+    organizerId?: string;
+    category?: string;
+  }
+) {
+  const where: Record<string, unknown> = {};
+
+  if (filters.status) {
+    where.status = filters.status;
+  }
+
+  if (filters.organizerId) {
+    where.organizerId = filters.organizerId;
+  }
+
+  if (filters.category) {
+    where.category = filters.category;
+  }
+
+  if (params.search) {
+    where.OR = [
+      { title: { contains: params.search, mode: "insensitive" } },
+      { slug: { contains: params.search, mode: "insensitive" } },
+    ];
+  }
+
+  const [data, total] = await Promise.all([
+    db.event.findMany({
+      where,
+      include: {
+        venue: { select: { name: true } },
+        organizer: { select: { id: true, name: true } },
+        ticketTiers: {
+          select: { soldCount: true, totalQuantity: true },
+        },
+      },
+      orderBy: { startDate: "desc" },
+      skip: (params.page - 1) * params.pageSize,
+      take: params.pageSize,
+    }),
+    db.event.count({ where }),
+  ]);
+
+  return buildPaginatedResult(data, total, params);
+}
+
+export async function getAllOrganizers() {
+  return db.organizer.findMany({
+    select: { id: true, name: true },
+    orderBy: { name: "asc" },
+  });
+}
+
 export async function getEventById(eventId: string) {
   return db.event.findUnique({
     where: { id: eventId },
