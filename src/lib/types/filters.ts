@@ -14,3 +14,7 @@ export interface AttendeeFilters {
 export interface VenueFilters {
   // Venues only use search for now
 }
+
+export interface UserFilters {
+  role?: string;
+}
