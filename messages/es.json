@@ -363,6 +363,40 @@
       "dailyDigestDescription": "Recibe un resumen diario de ventas y actividad."
     }
   },
+  "users": {
+    "title": "Usuarios",
+    "search": "Buscar por nombre o email...",
+    "noUsers": "No se encontraron usuarios",
+    "noUsersDescription": "No hay usuarios que coincidan con los filtros actuales.",
+    "user": "Usuario",
+    "email": "Email",
+    "role": "Rol",
+    "orders": "Órdenes",
+    "joined": "Registrado",
+    "actions": "Acciones",
+    "createUser": "Agregar Usuario",
+    "editUser": "Editar Usuario",
+    "deleteUser": "Eliminar Usuario",
+    "deleteConfirm": "¿Estás seguro de que quieres eliminar este usuario? Esto también eliminará todas sus órdenes, pases y datos. Esta acción no se puede deshacer.",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "filterByRole": "Todos los roles",
+    "roleLabels": {
+      "CUSTOMER": "Cliente",
+      "ORGANIZER": "Organizador",
+      "ADMIN": "Administrador"
+    },
+    "form": {
+      "name": "Nombre",
+      "namePlaceholder": "Ingresa el nombre completo",
+      "email": "Email",
+      "emailPlaceholder": "usuario@ejemplo.com",
+      "role": "Rol",
+      "save": "Guardar Cambios",
+      "saving": "Guardando...",
+      "create": "Crear Usuario"
+    }
+  },
   "common": {
     "cancel": "Cancelar",
     "confirm": "Confirmar",
@@ -381,6 +415,7 @@
     "attendees": "Asistentes",
     "analytics": "Analíticas",
     "venues": "Lugares",
+    "users": "Usuarios",
     "settings": "Configuración",
     "newEvent": "Nuevo Evento"
   },

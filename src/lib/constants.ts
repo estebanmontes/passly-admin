@@ -111,5 +111,6 @@ export const SIDEBAR_NAV = [
   { key: "attendees", icon: "groups", href: "/attendees" },
   { key: "analytics", icon: "analytics", href: "/analytics" },
   { key: "venues", icon: "location_on", href: "/venues" },
+  { key: "users", icon: "group", href: "/users" },
   { key: "settings", icon: "settings", href: "/settings" },
 ] as const;
